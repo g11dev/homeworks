@@ -1,0 +1,129 @@
+Begin)
+* Che cos'è Javascript ?
+*****Javascript è un linguaggio di programmazione che viene principalmente usato per la creazione di webApp. 
+
+* Quali sono i tipi di dati? 
+*****String, Number, Bigint, Boolean, Undefined, Null, Symbol, Object [object, array, date, function, Map...]
+
+* Quali sono le parole chiave per dichiarare un dato 
+*****(var, const, let)
+
+*Se dicessi:
+const x = {}
+let y = 5;
+x.y = 10
+x[y] = 11
+console.log(x);
+
+* Qual è il risultato ?
+a) { "y": 10, y: 11 }
+b) { "5": 11, y: 10 }
+c) Uncaught TypeError: Assignment to constant variable
+d) { y: 11 }
+
+*****è B perchè alla riga 15 inserisce il nome della variabile come 'key' e il valore come 'value',  mentre alla 14 assegna al campo "y" il valore a destra dell'uguale 
+
+**************
+
+* Qual è la differenza tra la struttura object e la struttura Map ?
+*****Nella struttura Map l'ordine di inserimento dei key-value pair è affidabile, object no.
+Nella struttura Map qualsiasi valore può essere usato come chiave, object no.
+Nella struttura Map la size è facilmente determinabile, object no.
+Nella struttura Map è iterabile, object no.
+Nella struttura Map l'ordine di inserimento dei key-value pair è affidabile, object no.
+
+* Qual è la differenza tra Map e WeakMap ?
+La WeakMap accetta solo objects oppure symbols non registered come key.
+
+* Cos'è un Symbol ?
+Buil-in object -> il cui costruttore returna un Symbol primitivo -> che è Unico. Viene usato per creare chiavi uniche nelle weakMap. 
+
+* Che differenza c'e tra == e === ?
+== compara il valore di 2 espressioni (è la parola corretta?), === compara valore e Tipo, l'uguaglianza deve essere 'perfetta'
+
+**************
+
+a)
+Qual è il risultato della seguente operazione 2+5+"3"?
+*****"73"
+
+* versione medium
+Qual è il risultato ?
+const sum = [2, 5, "3"].reduce((a, b) => a + b);
+console.log(sum);	// ?
+*****Per me fa "93", invece fa "73", perchè reduce salta il "giro 0"
+
+* versione medium 2
+*> Commentare il seguente programma
+function doSomething(arr: any) {
+    return arr.reduce((a: any, b: any) => a + b);
+}
+
+const input = [[1, 2, 3], [1, "2", 3], "123"];
+input.forEach((x) => console.log(doSomething(x)));
+
+*> Individuare eventuali bug e fare la fix
+
+=====================================================
+
+b) 
+Scrivere due funzioni che implementino lo shift circolare a destra ed a sinistra di un array.
+esempio array [1,2,3]
+shift a destra  > [3,1,2]
+shift a sinistra" > [2,3,1]
+
+=====================================================
+
+c)
+Dato in input un oggetto come il seguente
+let obj = { "LY": 43, "US": 19, "IN": 395, "IR": 32, "EG": 12, "SA": 17, };
+
+creare un array del tipo Array<{ name: "string", value: number }> ordinato per value
+
+Output desiderato
+[
+ {"name":"EG","value":12},
+ {"name":"SA","value":17},
+ {"name":"US","value":19},
+ {"name":"IR","value":32},
+ {"name":"LY","value":43},
+ {"name":"IN","value":395}
+]
+
+=====================================================
+
+d) 
+Descrivere il comportamento
+
+for (var i = 1; i < 8; i++) {
+	setTimeout(function () {
+		console.log(i);
+	}, i * 1000);
+}
+
+Approfondimento: https://developer.mozilla.org/en-US/docs/Glossary/Hoisting
+
+=====================================================
+
+decimal)
+console.log(0.01 + 0.05 == 0.06) //?
+
+
+stack vs heap)
+function func(par: string | string[]): void {
+	if (Array.isArray(par) && par.length > 0) {
+		par[0] = "pippo";
+	} else {
+		par = "pippo";
+	}
+
+	return;
+}
+
+let a = "pluto";
+let b = ["pluto"];
+func(a);
+func(b);
+
+console.log(a);		//?
+console.log(b);		//?
